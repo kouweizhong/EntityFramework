@@ -21,7 +21,25 @@ namespace Microsoft.Data.Entity.SqlServer.FunctionalTests
                 base.OnModelCreating(modelBuilder);
 
                 modelBuilder.ForRelational().Sequence("StartAtZeroSequence").Start(0);
-                modelBuilder.ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<Root>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<Optional1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<Optional2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<OptionalAk1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<OptionalAk2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<OptionalSingle1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<OptionalSingle2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<OptionalSingleAk1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<OptionalSingleAk2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<Required1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<Required2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<RequiredAk1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<RequiredAk2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<RequiredNonPkSingle1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<RequiredNonPkSingle2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<RequiredNonPkSingleAk1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<RequiredNonPkSingleAk2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<RequiredSingleAk1>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
+                modelBuilder.Entity<RequiredSingleAk2>().Property(e => e.Id).ForSqlServer().UseSequence("StartAtZeroSequence");
 
                 SetSentinelValues(modelBuilder);
             }

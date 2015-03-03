@@ -20,7 +20,25 @@ namespace Microsoft.Data.Entity.SqlServer.FunctionalTests
             {
                 base.OnModelCreating(modelBuilder);
 
-                modelBuilder.ForSqlServer().UseSequence();
+                modelBuilder.Entity<Root>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<Optional1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<Optional2>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<OptionalAk1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<OptionalAk2>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<OptionalSingle1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<OptionalSingle2>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<OptionalSingleAk1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<OptionalSingleAk2>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<Required1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<Required2>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<RequiredAk1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<RequiredAk2>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<RequiredNonPkSingle1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<RequiredNonPkSingle2>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<RequiredNonPkSingleAk1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<RequiredNonPkSingleAk2>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<RequiredSingleAk1>().Property(e => e.Id).ForSqlServer().UseSequence();
+                modelBuilder.Entity<RequiredSingleAk2>().Property(e => e.Id).ForSqlServer().UseSequence();
             }
         }
     }

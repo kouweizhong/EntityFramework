@@ -192,15 +192,24 @@ namespace Microsoft.Data.Entity.FunctionalTests
                     .WithOne(e => e.Self)
                     .ForeignKey<WithStringFk>(e => e.SelfFk);
 
-                modelBuilder.Entity<WithIntKey>()
-                    .HasMany(e => e.Dependents)
-                    .WithOne(e => e.Principal)
-                    .ForeignKey(e => e.Fk);
+                modelBuilder.Entity<WithIntKey>(b =>
+                    {
+                        b.HasMany(e => e.Dependents)
+                            .WithOne(e => e.Principal)
+                            .ForeignKey(e => e.Fk);
+                        b.Property(e => e.Id).GenerateValueOnAdd(false);
+                    });
 
-                modelBuilder.Entity<WithNullableIntKey>()
-                    .HasMany(e => e.Dependents)
-                    .WithOne(e => e.Principal)
-                    .ForeignKey(e => e.Fk);
+                modelBuilder.Entity<WithNullableIntKey>(b =>
+                    {
+                        b.HasMany(e => e.Dependents)
+                            .WithOne(e => e.Principal)
+                            .ForeignKey(e => e.Fk);
+                        b.Property(e => e.Id).GenerateValueOnAdd(false);
+                    });
+
+                modelBuilder.Entity<WithNullableIntFk>().Property(e => e.Id).GenerateValueOnAdd(false);
+                modelBuilder.Entity<WithIntFk>().Property(e => e.Id).GenerateValueOnAdd(false);
             }
 
             protected void EnsureCreated()

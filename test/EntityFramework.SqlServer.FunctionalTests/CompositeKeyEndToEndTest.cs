@@ -201,22 +201,15 @@ namespace Microsoft.Data.Entity.SqlServer.FunctionalTests
 
             protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
-                modelBuilder.Entity<Pegasus>().Key(e => new { e.Id1, e.Id2 });
+                modelBuilder.Entity<Pegasus>(b =>
+                    {
+                        b.Key(e => new { e.Id1, e.Id2 });
+                        b.Property(e => e.Id1).GenerateValueOnAdd(false);
+                        b.Property(e => e.Id2).GenerateValueOnAdd(false);
+                    });
+
                 modelBuilder.Entity<Unicorn>().Key(e => new { e.Id1, e.Id2, e.Id3 });
                 modelBuilder.Entity<EarthPony>().Key(e => new { e.Id1, e.Id2 });
-
-                var unicornType = modelBuilder.Model.GetEntityType(typeof(Unicorn));
-
-                var id1 = unicornType.GetProperty("Id1");
-                id1.GenerateValueOnAdd = true;
-
-                var id3 = unicornType.GetProperty("Id3");
-                id3.GenerateValueOnAdd = true;
-
-                var earthType = modelBuilder.Model.GetEntityType(typeof(EarthPony));
-
-                var id = earthType.GetProperty("Id1");
-                id.GenerateValueOnAdd = true;
             }
         }
 

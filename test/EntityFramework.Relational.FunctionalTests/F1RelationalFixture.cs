@@ -24,6 +24,8 @@ namespace Microsoft.Data.Entity.Relational.FunctionalTests
                 .Entity<Team>(b =>
                     {
                         b.Key(c => c.Id);
+                        b.Property(c => c.Id).GenerateValueOnAdd(false);
+
                         b.ForRelational().Table("Teams");
                     });
 
